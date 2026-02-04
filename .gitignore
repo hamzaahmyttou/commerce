@@ -31,14 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-###
-/src/test/java/com/commerce/commerce/service/
-/src/main/java/com/commerce/commerce/config/
-/src/main/java/com/commerce/commerce/controller/
-/src/main/java/com/commerce/commerce/dto/
-/src/main/java/com/commerce/commerce/entity/
-/src/main/java/com/commerce/commerce/exception/
-/src/main/java/com/commerce/commerce/filter/
-/src/main/java/com/commerce/commerce/repository/
-/src/main/java/com/commerce/commerce/service/
