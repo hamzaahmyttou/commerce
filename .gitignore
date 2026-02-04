@@ -34,7 +34,6 @@ build/
 
 ###
 /src/test/java/com/commerce/commerce/service/
-/src/main/resources/application.properties
 /src/main/java/com/commerce/commerce/config/
 /src/main/java/com/commerce/commerce/controller/
 /src/main/java/com/commerce/commerce/dto/
