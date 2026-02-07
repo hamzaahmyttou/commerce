@@ -4,6 +4,8 @@ import com.commerce.commerce.dto.ProductDTO;
 import com.commerce.commerce.entity.*;
 import com.commerce.commerce.repository.*;
 
+import jakarta.persistence.EntityNotFoundException;
+import org.hibernate.procedure.ParameterMisuseException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -54,20 +57,24 @@ public class ProductService {
     }
 
     public ProductDTO updateProduct(Long id, ProductDTO productDTO) {
-        Product existing = modelMapper.map(readProductById(id), Product.class);
-        String email = authService.getCurrentUserEmail();
+        Optional<Product> existing = productRepository.findById(id);
+        if (existing.isEmpty()) {
+            throw new EntityNotFoundException("Product not found");
+        } else {
+            String email = authService.getCurrentUserEmail();
 
-        if (!existing.getOwner().getEmail().equals(email)) {
-            throw new AccessDeniedException("Not your product");
+            if (!existing.get().getOwner().getEmail().equals(email)) {
+                throw new AccessDeniedException("Not your product");
+            }
+
+            existing.get().setName(productDTO.getName());
+            existing.get().setDescription(productDTO.getDescription());
+            existing.get().setPrice(productDTO.getPrice());
+            existing.get().setStock(productDTO.getStock());
+            existing.get().setCategory(productDTO.getCategory());
+            existing.get().setImageUrl(productDTO.getImageUrl());
+            return modelMapper.map(productRepository.save(existing.get()), ProductDTO.class);
         }
-        
-        existing.setName(productDTO.getName());
-        existing.setDescription(productDTO.getDescription());
-        existing.setPrice(productDTO.getPrice());
-        existing.setStock(productDTO.getStock());
-        existing.setCategory(productDTO.getCategory());
-        existing.setImageUrl(productDTO.getImageUrl());
-        return modelMapper.map(productRepository.save(existing), ProductDTO.class);
     }
 
     public void deleteProductById(Long id) {
