@@ -1,5 +1,6 @@
 package com.commerce.commerce.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,12 +22,12 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<UserDTO> register(@RequestBody RegisterRequest req) {
+    public ResponseEntity<UserDTO> register(@Valid @RequestBody RegisterRequest req) {
         return ResponseEntity.ok(userService.register(req.getEmail(), req.getPassword()));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<TokenResponse> login(@RequestBody LoginRequest req) {
+    public ResponseEntity<TokenResponse> login(@Valid @RequestBody LoginRequest req) {
         String token = userService.login(
                 req.getEmail(),
                 req.getPassword()
