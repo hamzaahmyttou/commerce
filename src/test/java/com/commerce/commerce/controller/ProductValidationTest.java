@@ -47,7 +47,7 @@ class ProductValidationTest {
                                 "id": 0,
                                 "name": "",
                                 "description": "",
-                                "price": 10;
+                                "price": 10,
                                 "stock": 10
                             }
                         """))
