@@ -2,6 +2,9 @@ package com.commerce.commerce.service;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
 
 import javax.crypto.SecretKey;
 
@@ -28,6 +31,10 @@ public class JwtService {
     }
 
     public String generateToken(User user) {
+        Map<String, Object> claims = new HashMap<>();
+
+        claims.put("role", user.getRole().name());
+
         return Jwts.builder()
                 .subject(user.getEmail())
                 .claim("userId", user.getId())
@@ -56,5 +63,10 @@ public class JwtService {
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
+    }
+
+    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = parseClaims(token);
+        return claimsResolver.apply(claims);
     }
 }

@@ -1,5 +1,6 @@
 package com.commerce.commerce.service;
 
+import com.commerce.commerce.entity.Role;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,7 @@ public class UserService {
         User user = new User();
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(password));
+        user.setRole(Role.USER);
         user.setActive(true);
 
         userRepository.save(user);
