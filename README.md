@@ -16,8 +16,10 @@ Spring Boot REST API for a simple e-commerce platform.
 - Global exception handling
 
 ## Run locally
+````
 mvn clean package
 docker-compose up --build
+````
 
 ## Authentication
 Login to receive JWT
