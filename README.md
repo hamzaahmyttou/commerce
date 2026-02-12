@@ -1,21 +1,35 @@
-### Tech stack :
+# E-commerce API
 
-- Java
+Spring Boot REST API for a simple e-commerce platform.
+
+## Tech Stack
+- Java 21
 - Spring Boot
-- Spring MVC
-- Spring Data JPA
-- Spring Security
-- PostgreSQL (ref)
+- Spring Security (JWT)
+- PostgreSQL
+- Docker & Docker Compose
 
-### Current features :
+## Features
+- User registration and login (JWT)
+- Role-based authorization (USER / ADMIN)
+- Product CRUD with ownership checks
+- Global exception handling
 
-- Product
-- User
+## Run locally
+mvn clean package
+docker-compose up --build
 
-### Planned features :
+## Authentication
+Login to receive JWT
+Send token in Authorization: Bearer <token>
 
-- Cart
-- Order
-- Payment
-- Inventory
-- Coupon
+## API Endpoints
+| Method | Endpoint       | Description                      |
+|--------|----------------|----------------------------------|
+| POST   | /auth/register | Register user                    |
+| POST   | /auth/login    | Login                            |
+| GET    | /products      | List products                    |
+| GET    | /products/{id} | Read the product n°=id           |
+| POST   | /products      | Create product (auth)            |
+| PUT    | /products/{id} | Update the product n°=id (owner) |
+| DELETE | /products/{id} | Delete the product n°=id (ADMIN) |
