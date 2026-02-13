@@ -7,6 +7,47 @@
   },
   "item": [
     {
+      "name": "List",
+      "id": "b2fbe83e-d5b5-4f08-98c4-8775e7776541",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Test\",\r\n    \"price\": 111.11,\r\n    \"stock\": 11\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/products",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
       "name": "Register",
       "id": "03499e54-3018-49d4-ade8-eae456d9b3c6",
       "protocolProfileBehavior": {
@@ -125,16 +166,98 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Update",
+      "id": "46bbf662-b0a1-417b-a2a2-a10538934b48",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Test\",\r\n    \"price\": 111.11,\r\n    \"stock\": 11\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/products",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete",
+      "id": "36ea6bca-53b5-4b98-90e8-0c0b53e960b5",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Test\",\r\n    \"price\": 111.11,\r\n    \"stock\": 11\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/products",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "products"
+          ]
+        }
+      },
+      "response": []
     }
   ],
   "variable": [
     {
-      "id": "be9e5468-969a-4add-9cae-f78709a6eae5",
+      "id": "fe518cf3-ce87-4a24-96d8-204f90c41c0e",
       "key": "base_url",
       "value": ""
     },
     {
-      "id": "e49672fa-51cf-4365-9519-ecfb76df4786",
+      "id": "26bd0253-7dc8-46bc-b38b-2cb8cd9f7472",
       "key": "token",
       "value": ""
     }
