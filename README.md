@@ -60,7 +60,7 @@ commerce/
 #### Backend
 
 ```bash
-cd backend
+cd api
 mvn clean package
 docker-compose up
 ```
@@ -74,7 +74,7 @@ http://localhost:8080
 #### Frontend
 
 ```bash
-cd frontend
+cd ui
 ng serve
 ```
 
