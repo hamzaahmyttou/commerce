@@ -26,12 +26,12 @@ Login to receive JWT
 Send token in Authorization: Bearer <token>
 
 ## API Endpoints
-| Method | Endpoint       | Description                      |
-|--------|----------------|----------------------------------|
-| POST   | /auth/register | Register user                    |
-| POST   | /auth/login    | Login                            |
-| GET    | /products      | List products                    |
-| GET    | /products/{id} | Read the product n°=id           |
-| POST   | /products      | Create product (auth)            |
-| PUT    | /products/{id} | Update the product n°=id (owner) |
-| DELETE | /products/{id} | Delete the product n°=id (ADMIN) |
+| Method | Endpoint            | Description                      |
+|--------|---------------------|----------------------------------|
+| POST   | /api/users/register | Register user                    |
+| POST   | /api/users/login    | Login                            |
+| GET    | /api/products       | List products                    |
+| GET    | /api/products/{id}  | Read the product n°=id           |
+| POST   | /api/products       | Create product (auth)            |
+| PUT    | /api/products/{id}  | Update the product n°=id (owner) |
+| DELETE | /api/products/{id}  | Delete the product n°=id (ADMIN) |
