@@ -3,6 +3,7 @@
 Spring Boot REST API for a simple e-commerce platform.
 
 ## Tech Stack
+
 - Java 21
 - Spring Boot
 - Spring Security (JWT)
@@ -10,22 +11,25 @@ Spring Boot REST API for a simple e-commerce platform.
 - Docker & Docker Compose
 
 ## Features
+
 - User registration and login (JWT)
 - Role-based authorization (USER / ADMIN)
 - Product CRUD with ownership checks
 - Global exception handling
 
 ## Run locally
-````
-mvn clean package
+
+```bash
 docker-compose up --build
-````
+```
 
 ## Authentication
+
 Login to receive JWT
 Send token in Authorization: Bearer <token>
 
 ## API Endpoints
+
 | Method | Endpoint            | Description                      |
 |--------|---------------------|----------------------------------|
 | POST   | /api/users/register | Register user                    |

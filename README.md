@@ -61,8 +61,7 @@ commerce/
 
 ```bash
 cd api
-mvn clean package
-docker-compose up
+docker-compose up --build
 ```
 
 API available at:
