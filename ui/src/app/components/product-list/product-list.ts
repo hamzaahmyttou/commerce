@@ -8,7 +8,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-product-list',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './product-list.html'
+  templateUrl: './product-list.html',
+  styleUrl: './product-list.css'
 })
 export class ProductList implements OnInit {
 

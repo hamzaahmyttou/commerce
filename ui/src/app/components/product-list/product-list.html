@@ -1,6 +1,45 @@
-<div *ngFor="let product of products">
-  <h3 (click)="goToDetail(product.id)" style="cursor:pointer">
-    {{ product.name }}
-  </h3>
-  <p>{{ product.price }} $</p>
+<div class="container">
+
+  <div class="grid">
+    <div class="card" *ngFor="let product of products">
+
+      <img
+        [src]="product.imageUrl"
+        alt="{{ product.name }}"
+        class="product-image"
+        (click)="goToDetail(product.id)"
+      />
+
+      <div class="card-content">
+        <h3
+          (click)="goToDetail(product.id)"
+          class="product-title"
+        >
+          {{ product.name }}
+        </h3>
+
+        <p class="description">
+          {{ product.description }}
+        </p>
+
+        <div class="bottom">
+          <span class="price">{{ product.price }} $</span>
+        </div>
+
+        <div class="bottom">
+          <span
+            class="stock"
+            [ngClass]="{ 'out': product.stock === 0 }"
+          >
+            {{ product.stock > 0 ? 'In Stock' : 'Out of Stock' }}
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <button class="refresh-btn" (click)="refresh()">
+    Refresh
+  </button>
 </div>
