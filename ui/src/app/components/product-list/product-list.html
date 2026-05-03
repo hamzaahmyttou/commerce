@@ -1,6 +1,6 @@
-@for (product of products; track product.id) {
-<div>
-  <h3>{{ product.name }}</h3>
+<div *ngFor="let product of products">
+  <h3 (click)="goToDetail(product.id)" style="cursor:pointer">
+    {{ product.name }}
+  </h3>
   <p>{{ product.price }} $</p>
 </div>
-}

@@ -1,9 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProductService } from '../../services/product';
+import { Product } from '../../models/product';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-detail',
-  imports: [],
-  templateUrl: './product-detail.html',
-  styleUrl: './product-detail.css',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './product-detail.html'
 })
-export class ProductDetail {}
+export class ProductDetail implements OnInit {
+
+  product?: Product;
+
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService
+  ) {}
+
+  ngOnInit() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.productService.getProductById(id).subscribe(data => {
+      this.product = data;
+    });
+  }
+}

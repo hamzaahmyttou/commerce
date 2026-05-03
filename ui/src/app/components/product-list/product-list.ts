@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product';
 import { Product } from '../../models/product';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './product-list.html'
 })
 export class ProductList implements OnInit {
@@ -32,5 +33,9 @@ export class ProductList implements OnInit {
 
   refresh() {
     this.loadProducts();
+  }
+
+  goToDetail(id: number) {
+    this.router.navigate(['/product', id]);
   }
 }
