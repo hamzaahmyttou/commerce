@@ -1,9 +1,12 @@
-# E-commerce Platform (Full Stack)
+# E-commerce Platform (API + minimal UI)
 
-This project is a full-stack e-commerce application composed of:
+This project is an e-commerce application composed of:
 
 * **Backend**: Spring Boot REST API (JWT-secured)
-* **Frontend**: Angular UI (Product listing)
+* **Frontend**: Angular UI (Product endpoints visualization)
+
+Minimal Angular frontend used only for testing and visualizing the API Product endpoints.
+The core of the project is the Java Spring Boot backend.
 
 ---
 
@@ -125,11 +128,9 @@ Authorization: Bearer <token>
 
     * Cart & checkout
     * Order management
-    * UI authentication flow
-    * Admin dashboard
 
 ---
 
 ## Author
 
-Full-stack e-commerce project built with Spring Boot and Angular.
+E-commerce project built with Spring Boot.
