@@ -88,6 +88,50 @@ http://localhost:4200
 
 ---
 
+## GitHub Actions (CI)
+
+This project uses **GitHub Actions** for Continuous Integration (CI).
+
+On every push and pull request, the workflow automatically:
+
+* Builds the Spring Boot backend
+* Starts a PostgreSQL service
+* Runs the backend tests
+* Builds the Angular frontend
+* Verifies that both applications compile successfully
+
+### Required GitHub Secrets
+
+Before running the workflow, add the following repository secrets under:
+
+**Settings → Secrets and variables → Actions**
+
+| Secret                       | Description                                     |
+| ---------------------------- | ----------------------------------------------- |
+| `SPRING_DATASOURCE_URL`      | `jdbc:postgresql://localhost:5432/ecommerce_db` |
+| `SPRING_DATASOURCE_USERNAME` | PostgreSQL username                             |
+| `SPRING_DATASOURCE_PASSWORD` | PostgreSQL password                             |
+| `JWT_SECRET`                 | Secret key used to sign JWT tokens              |
+
+> **Note**
+>
+> The GitHub Actions workflow connects to PostgreSQL using `localhost`, while the Docker Compose configuration uses the service name `db`. This is expected because GitHub Actions runs the database as a service container.
+
+### Workflow
+
+The CI workflow is located at:
+
+```text
+.github/workflows/ci.yml
+```
+
+It is triggered automatically on:
+
+* Push to the main branches
+* Pull requests
+
+---
+
 ## Authentication
 
 1. Login via:
