@@ -32,7 +32,7 @@ commerce/
 
 ### Frontend
 
-* Angular (CLI)
+* Angular
 * TypeScript
 * HTML/CSS
 
