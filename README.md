@@ -90,15 +90,15 @@ http://localhost:4200
 
 ## GitHub Actions (CI)
 
-This project uses **GitHub Actions** for Continuous Integration (CI).
+This project uses **GitHub Actions** to automate Continuous Integration (CI).
 
 On every push and pull request, the workflow automatically:
 
-* Builds the Spring Boot backend
-* Starts a PostgreSQL service
-* Runs the backend tests
+* Starts a PostgreSQL service for backend integration tests
+* Builds and tests the Spring Boot backend using Maven
+* Builds the backend Docker image
 * Builds the Angular frontend
-* Verifies that both applications compile successfully
+* Verifies that all steps complete successfully
 
 ### Required GitHub Secrets
 
