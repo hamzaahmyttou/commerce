@@ -1,5 +1,7 @@
 # E-commerce Platform (API + minimal UI)
 
+[![CI](https://github.com/hamzaahmyttou/commerce/actions/workflows/ci.yml/badge.svg)](https://github.com/hamzaahmyttou/commerce/actions/workflows/ci.yml)
+
 This project is an e-commerce application composed of:
 
 * **Backend**: Spring Boot REST API (JWT-secured)
