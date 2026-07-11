@@ -1,14 +1,11 @@
-# E-commerce Platform (API + minimal UI)
+# E-commerce Platform (API + UI)
 
 [![CI](https://github.com/hamzaahmyttou/commerce/actions/workflows/ci.yml/badge.svg)](https://github.com/hamzaahmyttou/commerce/actions/workflows/ci.yml)
 
 This project is an e-commerce application composed of:
 
 * **Backend**: Spring Boot REST API (JWT-secured)
-* **Frontend**: Angular UI (Product endpoints visualization)
-
-Minimal Angular frontend used only for testing and visualizing the API Product endpoints.
-The core of the project is the Java Spring Boot backend.
+* **Frontend**: Angular UI
 
 ---
 
@@ -52,9 +49,9 @@ commerce/
 
 ### Frontend UI
 
+* User registration & login
 * Product listing page
 * API integration with backend
-* Basic Angular component structure
 
 ---
 
@@ -165,18 +162,3 @@ Authorization: Bearer <token>
 | DELETE | /api/products/{id}  | Delete product (ADMIN only)    |
 
 ---
-
-## Development Notes
-
-* Frontend currently includes **product listing UI only**
-* Backend is fully functional for authentication and product management
-* Future improvements:
-
-    * Cart & checkout
-    * Order management
-
----
-
-## Author
-
-E-commerce project built with Spring Boot.
