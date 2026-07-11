@@ -41,8 +41,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.sub = this.route.paramMap.subscribe((params) => {
       const rawId = params.get('id');
-      this.isNew = rawId === 'new';
-      const id = rawId && rawId !== 'new' ? Number(rawId) : null;
+      this.isNew = rawId === null;
+      const id = rawId && rawId !== null ? Number(rawId) : null;
 
       if (this.isNew) {
         this.editMode = true;
