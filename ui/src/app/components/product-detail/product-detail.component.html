@@ -1,0 +1,78 @@
+<section class="page">
+  <a routerLink="/products">← Back to products</a>
+
+  <div class="panel">
+    <ng-container *ngIf="loading; else content">
+      <p>Loading...</p>
+    </ng-container>
+
+    <ng-template #content>
+      <p class="error" *ngIf="error">{{ error }}</p>
+
+      <ng-container *ngIf="isNew || editMode; else readOnly">
+        <h1>{{ isNew ? 'Create product' : 'Edit product' }}</h1>
+
+        <form class="form" [formGroup]="form" (ngSubmit)="save()">
+          <label>
+            Name
+            <input type="text" formControlName="name" />
+          </label>
+
+          <label>
+            Description
+            <textarea rows="5" formControlName="description"></textarea>
+          </label>
+
+          <div class="row">
+            <label>
+              Price
+              <input type="number" min="0" step="0.01" formControlName="price" />
+            </label>
+
+            <label>
+              Stock
+              <input type="number" min="0" formControlName="stock" />
+            </label>
+          </div>
+
+          <label>
+            Category
+            <input type="text" formControlName="category" />
+          </label>
+
+          <label>
+            Image URL
+            <input type="url" formControlName="imageUrl" />
+          </label>
+
+          <div class="actions">
+            <button type="submit" [disabled]="saving">
+              {{ saving ? 'Saving...' : 'Save' }}
+            </button>
+
+            <button type="button" class="ghost" (click)="cancel()">Cancel</button>
+          </div>
+        </form>
+      </ng-container>
+
+      <ng-template #readOnly>
+        <h1>{{ product?.name }}</h1>
+        <p class="description">{{ product?.description }}</p>
+
+        <div class="details">
+          <p><strong>Price:</strong> {{ product?.price | currency }}</p>
+          <p><strong>Stock:</strong> {{ product?.stock }}</p>
+          <p *ngIf="product?.category"><strong>Category:</strong> {{ product?.category }}</p>
+          <p *ngIf="product?.ownerUsername"><strong>Owner:</strong> {{ product?.ownerUsername }}</p>
+        </div>
+
+        <img *ngIf="product?.imageUrl" [src]="product?.imageUrl!" [alt]="product?.name" />
+
+        <div class="actions">
+          <button *ngIf="canEdit" (click)="editMode = true">Edit</button>
+          <button *ngIf="auth.isAdmin()" class="danger" (click)="delete()">Delete</button>
+        </div>
+      </ng-template>
+    </ng-template>
+  </div>
+</section>

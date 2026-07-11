@@ -1,12 +1,15 @@
-<div class="hero">
-  <div class="hero-content">
-    <h1>Welcome to e-Commerce Store</h1>
-    <p>Your simple, fast and modern shopping experience.</p>
+<header class="topbar">
+  <a class="brand" routerLink="/">Commerce</a>
 
-    <button (click)="goToProducts()">Products</button>
-  </div>
-</div>
+  <nav class="nav">
+    <a routerLink="/products">Products</a>
+    <a *ngIf="!auth.isLoggedIn()" routerLink="/login">Login</a>
+    <a *ngIf="!auth.isLoggedIn()" routerLink="/register">Register</a>
+    <a *ngIf="auth.isLoggedIn()" routerLink="/products/new">New product</a>
+    <button *ngIf="auth.isLoggedIn()" (click)="logout()">Logout</button>
+  </nav>
+</header>
 
-<section id="products">
+<main class="shell">
   <router-outlet></router-outlet>
-</section>
+</main>

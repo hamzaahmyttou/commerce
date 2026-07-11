@@ -1,0 +1,32 @@
+<section class="page">
+  <div class="header">
+    <div>
+      <h1>Products</h1>
+      <p>Browse the catalog and manage your own products.</p>
+    </div>
+
+    <a *ngIf="auth.isLoggedIn()" routerLink="/products/new" class="primary">Add product</a>
+  </div>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <p *ngIf="loading">Loading products...</p>
+
+  <div class="grid" *ngIf="!loading">
+    <article class="card" *ngFor="let product of products">
+      <img *ngIf="product.imageUrl" [src]="product.imageUrl" [alt]="product.name" />
+      <div class="content">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <div class="meta">
+          <span>{{ product.price | currency }}</span>
+          <span>Stock: {{ product.stock }}</span>
+        </div>
+
+        <div class="actions">
+          <a [routerLink]="['/products', product.id]">View</a>
+          <button *ngIf="auth.isAdmin()" (click)="remove(product.id)">Delete</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>

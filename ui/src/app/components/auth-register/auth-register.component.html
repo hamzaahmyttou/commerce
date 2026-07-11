@@ -1,0 +1,30 @@
+<div class="auth-card">
+  <h1>Create account</h1>
+  <p>Register to start creating products.</p>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+    <label>
+      Name
+      <input type="text" formControlName="name" placeholder="Jane Doe" />
+    </label>
+
+    <label>
+      Email
+      <input type="email" formControlName="email" placeholder="you@example.com" />
+    </label>
+
+    <label>
+      Password
+      <input type="password" formControlName="password" placeholder="At least 6 characters" />
+    </label>
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+    <p class="success" *ngIf="success">{{ success }}</p>
+
+    <button type="submit" [disabled]="loading">
+      {{ loading ? 'Creating...' : 'Register' }}
+    </button>
+  </form>
+
+  <a routerLink="/login">Already have an account?</a>
+</div>

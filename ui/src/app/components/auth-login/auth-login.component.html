@@ -1,0 +1,24 @@
+<div class="auth-card">
+  <h1>Welcome back</h1>
+  <p>Sign in to manage products.</p>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+    <label>
+      Email
+      <input type="email" formControlName="email" placeholder="you@example.com" />
+    </label>
+
+    <label>
+      Password
+      <input type="password" formControlName="password" placeholder="••••••••" />
+    </label>
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+
+    <button type="submit" [disabled]="loading">
+      {{ loading ? 'Signing in...' : 'Login' }}
+    </button>
+  </form>
+
+  <a routerLink="/register">Create a new account</a>
+</div>
