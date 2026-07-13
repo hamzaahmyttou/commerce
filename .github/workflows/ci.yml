@@ -81,3 +81,17 @@ jobs:
 
       - name: Build Angular application
         run: npm run build -- --configuration production
+
+  docker:
+    name: Build Docker Compose
+    runs-on: ubuntu-latest
+
+    needs:
+      - backend
+      - frontend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build all Docker images
+        run: docker compose build
