@@ -1,9 +1,11 @@
 package com.commerce.commerce.exception;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -76,5 +78,20 @@ public class GlobalExceptionHandler {
                 "Internal server error"
         );
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problemDetail);
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ProblemDetail> handleInvalidJson(
+            HttpMessageNotReadableException ex,
+            HttpServletRequest request) {
+
+        ProblemDetail problem =
+                ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+
+        problem.setTitle("Bad Request");
+        problem.setDetail("Malformed JSON request");
+        problem.setProperty("instance", request.getRequestURI());
+
+        return ResponseEntity.badRequest().body(problem);
     }
 }
