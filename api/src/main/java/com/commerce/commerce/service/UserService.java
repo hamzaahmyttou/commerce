@@ -33,12 +33,13 @@ public class UserService {
 		this.modelMapper = modelMapper;
     }
 
-    public UserDTO register(String email, String password) {
+    public UserDTO register(String name, String email, String password) {
         if (userRepository.existsByEmail(email)) {
             throw new EmailAlreadyUsedException();
         }
 
         User user = new User();
+        user.setName(name);
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(password));
         user.setRole(Role.USER);

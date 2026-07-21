@@ -21,7 +21,7 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<UserDTO> register(@Valid @RequestBody RegisterRequest req) {
-        return ResponseEntity.ok(userService.register(req.getEmail(), req.getPassword()));
+        return ResponseEntity.ok(userService.register(req.getName(), req.getEmail(), req.getPassword()));
     }
 
     @PostMapping("/login")

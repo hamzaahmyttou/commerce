@@ -37,7 +37,7 @@ class UserServiceTest {
         when(userRepository.existsByEmail("a@test.com")).thenReturn(true);
 
         assertThrows(EmailAlreadyUsedException.class, () -> {
-            userService.register("a@test.com", "password");
+            userService.register("name", "a@test.com", "password");
         });
     }
 

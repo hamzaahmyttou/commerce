@@ -44,6 +44,7 @@ class UserValidationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                             {
+                                "name": "test",
                                 "email": "test@test.com",
                                 "password": "pass"
                             }
@@ -57,6 +58,7 @@ class UserValidationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                             {
+                                "name": "test",
                                 "email": "test@test.com",
                                 "password": "password"
                             }
@@ -78,7 +80,7 @@ class UserValidationTest {
     }
 
     @Test
-    void shouldReturn200WhenLoginrValidUser() throws Exception {
+    void shouldReturn200WhenLoginValidUser() throws Exception {
         mockMvc.perform(post("/api/users/login")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
