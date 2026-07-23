@@ -18,17 +18,20 @@ import java.util.Optional;
 @Service
 public class ProductService {
 	
-    @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 	
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     
-    @Autowired
-    private AuthService authService;
+    private final AuthService authService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
+
+    public ProductService(ProductRepository productRepository, UserRepository userRepository, AuthService authService, ModelMapper modelMapper) {
+        this.productRepository = productRepository;
+        this.userRepository = userRepository;
+        this.authService = authService;
+        this.modelMapper = modelMapper;
+    }
 
     public ProductDTO createProduct(ProductDTO productDTO) {
     	Product product = modelMapper.map(productDTO, Product.class);
